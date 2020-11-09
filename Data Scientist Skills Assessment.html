@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Assessment Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <h1>Skills Assessment</h1>
+  <p>BluePath Solutions</p>
+</div>
+
+<div class="container-fluid">
+    <div class="col-6 offset-3">
+        <div class="col-md-2">
+            <label for="cohortSize">Sample Size</label>
+            <input id="cohortSize" type="number" value="10000" min="0" step="1000" onchange="run_model(); update_outuputs();">
+            </div>
+        
+        <div class="col-md-2">
+            <label for="growthRate">Population Growth Rate</label>
+            <input id="growthRate" type="number" value="3" min="0" max="100" step="1" onchange="run_model(); update_outuputs();">
+            </div>
+    
+        <div class="col-md-2"> 
+            <label for="timeHorizon">Time Horizon</label>
+            <select id="timeHorizon" onchange="run_model(); update_outuputs();">
+                <option value="1">1 Year</option>
+                <option value="2">2 Years</option>
+            </select>
+            </div>
+    </div>
+</div>
+<hr style="background-color:whitesmoke; width:50%; height:3px; margin-left: 0px;">
+<div class="row-fluid">
+    <div class="col-6">
+        <table style="table-layout: fixed; width: 40%;">
+            <tr>
+                <th></th>
+                <th>Young</th>
+                <th>Old</th>
+            </tr>
+            <tr>
+                <th>Population Distribution</th>
+                <td><input id="youngDbn" type="number" value="70" min="0" max="100" onchange="run_model(); update_outuputs();"><span>%</span></td>
+                <td><input id="oldDbn" type="number" value="30" min="0" max="100" onchange="run_model(); update_outuputs();"><span>%</span></td>
+            </tr>
+            <tr>
+                <th>Infection Rate</th>
+                <td><input id="youngInfection" type="number" value="35" min="0" max="100" onchange="run_model(); update_outuputs();"><span>%</span></td>
+                <td><input id="oldInfection" type="number" value="60" min="0" max="100" onchange="run_model(); update_outuputs();"><span>%</span></td>
+            </tr>
+            <tr>
+                <th>Average Salary</th>
+                <td><span>$</span><input id="youngSalary" type="number" value="35000" min="0" style="width:30%" onchange="run_model(); update_outuputs();"></td>
+                <td><span>$</span><input id="oldSalary" type="number" value="40000" min="0" style="width:30%" onchange="run_model(); update_outuputs();"></td>
+            </tr>
+        </table>
+        <hr style="background-color:whitesmoke; width:50%; height:3px; margin-left: 0px;">
+    </div>
+    <div class="col-6">
+        <table>
+
+            <tr>
+                <th>Doctor Visit</th>
+                <td><span>$</span><input id="costDoctor" type="number" value="100" min="0" style="width:30%" onchange="run_model(); update_outuputs();"></td>
+            </tr>
+            <tr>
+                <th>Prescriptions</th>
+                <td><span>$</span><input id="costPrescriptions" type="number" value="50" min="0" style="width:30%" onchange="run_model(); update_outuputs();"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="col-6">
+    <hr style="background-color:black; width:50%; height:3px; margin-left: 0px;">
+    <table style="table-layout: fixed; width: 40%;">
+        <tr>
+            <th></th>
+            <th>Year 1</th>
+            <th>Year 2</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <th>Young</th>
+            <td><input id="youngInfected1" type="number" value="2450" style="width:50%"></td>
+            <td><input id="youngInfected2" type="number" value="2524" style="width:50%"></td>
+            <td><input id="youngInfectedTotal" type="number" value="4974" style="width:50%"></td>
+        </tr>
+        <tr>
+            <th>Old</th>
+            <td><input id="oldInfected1" type="number" value="1800" style="width:50%"></td>
+            <td><input id="oldInfected2" type="number" value="1854" style="width:50%"></td>
+            <td><input id="oldInfectedTotal" type="number" value="3654" style="width:50%"></td>
+        </tr>
+    </table>
+
+    <hr style="background-color: whitesmoke; width:50%; height:3px; margin-left: 0px;">
+    <table style="table-layout: fixed; width: 40%;">
+        <tr>
+            <th></th>
+            <th>Year 1</th>
+            <th>Year 2</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <th>Young</th>
+            <td><span>$</span><input id="youngCosts1" type="number" value="1356923" style="width:80%"></td>
+            <td><span>$</span><input id="youngCosts2" type="number" value="1397631" style="width:80%"></td>
+            <td><span>$</span><input id="youngCostsTotal" type="number" value="2754554" style="width:80%"></td>
+        </tr>
+        <tr>
+            <th>Old</th>
+            <td><span>$</span><input id="oldCosts1" type="number" value="1100769" style="width:80%"></td>
+            <td><span>$</span><input id="oldCosts2" type="number" value="1133792" style="width:80%"></td>
+            <td><span>$</span><input id="oldCostsTotal" type="number" value="2234562" style="width:80%"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+<script src="run_model.js"></script>
+
+</html>
